@@ -4,7 +4,7 @@
   (:gen-class))
 
 (defn input-row->record [row]
-  (let [row (->> (s/split row #"\||,")
+  (let [row (->> (s/split row #" \| |, | ")
                  (map s/trim)
                  (into []))
         [last-name first-name email favorite-color date-of-birth] row]

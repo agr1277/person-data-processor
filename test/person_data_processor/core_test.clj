@@ -14,4 +14,7 @@
              (input-row->record "Example | Chris | chris@example.com | blue | 05/13/1992"))))
     (testing "parses comma delimited row"
       (is (= expected-record
-             (input-row->record "Example, Chris, chris@example.com, blue, 05/13/1992"))))))
+             (input-row->record "Example, Chris, chris@example.com, blue, 05/13/1992"))))
+    (testing "parses space delimited row"
+      (is (= expected-record
+             (input-row->record "Example Chris chris@example.com blue 05/13/1992"))))))
