@@ -15,7 +15,11 @@ values (:first-name, :last-name, :email, :favorite-color, :date-of-birth)
 
 -- :name select-records :? :*
 select * from records
-/*~ (if (:sort-by params)
-        (if (= :email-and-last-name (:sort-by params)) */
+/*~ (if-let [sort-by (:sort-by params)]
+    (if (= :email-and-last-name sort-by) */
 ORDER BY email DESC, last_name ASC
-/*~ )) ~*/
+/*~ (if (= :date-of-birth sort-by) */
+ORDER BY date_of_birth ASC
+/*~ (if (= :last-name sort-by) */
+ORDER BY last_name DESC
+/*~ )))) ~*/
