@@ -2,7 +2,10 @@
   :license {:name "MIT License"
             :url "https://spdx.org/licenses/MIT.html"}
   :dependencies [[org.clojure/clojure "1.10.1"]
-                 [clojure.java-time "0.3.2"]]
+                 [clojure.java-time "0.3.2"]
+                 [mount "0.1.16"]
+                 [conman "0.9.1"]
+                 [com.h2database/h2 "1.4.200"]]
   :main ^:skip-aot person-data-processor.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
