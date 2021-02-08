@@ -5,7 +5,9 @@
                  [clojure.java-time "0.3.2"]
                  [mount "0.1.16"]
                  [conman "0.9.1"]
-                 [com.h2database/h2 "1.4.200"]]
+                 [com.h2database/h2 "1.4.200"]
+                 [org.clojure/tools.logging "1.1.0"]
+                 [ch.qos.logback/logback-classic "1.1.3"]]
   :main ^:skip-aot person-data-processor.core
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
