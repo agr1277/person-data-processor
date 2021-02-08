@@ -11,3 +11,9 @@
 
 (conman/bind-connection *db* "sql/queries.sql")
 
+(defn get-records
+  ([] (get-records nil))
+  ([sort-by]
+   (->> (select-records {:sort-by sort-by})
+        (map #(dissoc % :id))
+        (into []))))

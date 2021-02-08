@@ -13,5 +13,9 @@ create table records
 insert into records (first_name, last_name, email, favorite_color, date_of_birth)
 values (:first-name, :last-name, :email, :favorite-color, :date-of-birth)
 
--- :name get-records :? :*
+-- :name select-records :? :*
 select * from records
+/*~ (if (:sort-by params)
+        (if (= :email-and-last-name (:sort-by params)) */
+ORDER BY email DESC, last_name ASC
+/*~ )) ~*/
