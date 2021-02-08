@@ -1,6 +1,7 @@
 (ns person-data-processor.core
   (:require [clojure.string :as s]
-            [java-time :as jt])
+            [java-time :as jt]
+            [clojure.java.io :as io])
   (:gen-class))
 
 (defn input-row->record [row]
@@ -17,6 +18,18 @@
 (defn input-rows->records [rows]
   (->> rows
        (map input-row->record)))
+
+(defn input-file->records [path]
+  (with-open [rdr (io/reader path)]
+    (->> rdr
+         line-seq
+         (into [])
+         input-rows->records)))
+
+(defn input-files->records [paths]
+  (->> paths
+       (map input-file->records)
+       flatten))
 
 (defn -main
   "I don't do a whole lot ... yet."
