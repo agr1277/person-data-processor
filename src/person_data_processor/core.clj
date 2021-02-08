@@ -14,6 +14,10 @@
      :favorite-color favorite-color
      :date-of-birth  (jt/local-date "MM/dd/yyyy" date-of-birth)}))
 
+(defn input-rows->records [rows]
+  (->> rows
+       (map input-row->record)))
+
 (defn -main
   "I don't do a whole lot ... yet."
   [& args]
