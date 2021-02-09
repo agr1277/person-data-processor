@@ -9,7 +9,12 @@
                  [org.clojure/tools.logging "1.1.0"]
                  [ch.qos.logback/logback-classic "1.1.3"]
                  [org.clojure/math.combinatorics "0.1.6"]
-                 [org.clojure/data.generators "1.0.0"]]
+                 [org.clojure/data.generators "1.0.0"]
+                 [org.clojure/data.json "0.2.6"]
+                 [compojure "1.6.2"]
+                 [http-kit "2.3.0"]
+                 [ring/ring-defaults "0.3.2"]]
   :aliases {"generate-data" ["run" "-m" "person-data-processor.data-gen"]
-            "cli"           ["run" "-m" "person-data-processor.cli"]}
+            "cli"           ["run" "-m" "person-data-processor.cli"]
+            "api"           ["run" "-m" "person-data-processor.api"]}
   :target-path "target/%s")
