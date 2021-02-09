@@ -14,10 +14,10 @@
              (input-row->record "Example | Chris | chris@example.com | blue | 1992-05-13"))))
     (testing "parses comma delimited row"
       (is (= expected-record
-             (input-row->record "Example, Chris, chris@example.com, blue, 1990-04-19"))))
+             (input-row->record "Example, Chris, chris@example.com, blue, 1992-05-13"))))
     (testing "parses space delimited row"
       (is (= expected-record
-             (input-row->record "Example Chris chris@example.com blue 1990-07-19"))))))
+             (input-row->record "Example Chris chris@example.com blue 1992-05-13"))))))
 
 (deftest test-input-rows->records
   (testing "parses rows delimited by pipe, comma, or space"
@@ -36,9 +36,9 @@
              :email          "john@example.com"
              :favorite-color "green"
              :date-of-birth  (jt/local-date 1990 07 19)}]
-           (input-rows->records ["Example | Chris | chris@example.com | blue | 05/13/1992"
-                                 "Example, Steve, steve@example.com, red, 04/19/1990"
-                                 "Sample John john@example.com green 07/19/1990"])))))
+           (input-rows->records ["Example | Chris | chris@example.com | blue | 1992-05-13"
+                                 "Example, Steve, steve@example.com, red, 1990-04-19"
+                                 "Sample John john@example.com green 1990-07-19"])))))
 
 (deftest test-input-file->records
   (testing "reads file and parses into records"
