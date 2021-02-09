@@ -3,13 +3,10 @@
             [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.middleware.defaults :refer :all]
-            [clojure.pprint :as pp]
-            [clojure.string :as str]
             [clojure.data.json :as json]
-            [mount.core :as mount]
+            [mount.core :as m]
             [person-data-processor.db :as db]
-            [person-data-processor.parse :as parse]
-            [java-time :as jt])
+            [person-data-processor.parse :as parse])
   (:gen-class))
 
 (defn get-records-response [sort-by]
@@ -36,12 +33,8 @@
   (-write [date out]
     (json/-write (str date) out)))
 
-(mount/defstate server
-                :start (do
-                         (server/run-server (wrap-defaults #'app-routes api-defaults) {:port 3000})
-                         (db/create-records-table!)))
-
 (defn -main
   [& args]
-  (mount/start)
+  (m/start)
+  (server/run-server (wrap-defaults #'app-routes api-defaults) {:port 3000})
   (println (str "Running api at http://127.0.0.1:3000/")))

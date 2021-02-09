@@ -1,15 +1,17 @@
 (ns person-data-processor.api-test
   (:require [clojure.test :refer :all]
-            [person-data-processor.api :as api :refer [app-routes]]
-            [clojure.data.json :as json]))
+            [person-data-processor.db]
+            [person-data-processor.api :refer [app-routes]]
+            [clojure.data.json :as json]
+            [mount.core :as m]))
 
 (defn- test-body [str]
   (clojure.java.io/input-stream (java.io.ByteArrayInputStream. (.getBytes str))))
 
 (defn- start-db [f]
-  (mount.core/start)
+  (m/start)
   (f)
-  (mount.core/stop))
+  (m/stop))
 
 (use-fixtures :each start-db)
 

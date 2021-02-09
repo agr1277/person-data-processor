@@ -9,6 +9,9 @@ create table records
     date_of_birth date
 )
 
+-- :name drop-records-table! :! :raw
+drop table records
+
 -- :name insert-record! :! :n
 insert into records (first_name, last_name, email, favorite_color, date_of_birth)
 values (:first-name, :last-name, :email, :favorite-color, :date-of-birth)

@@ -1,14 +1,13 @@
 (ns person-data-processor.db-test
   (:require [clojure.test :refer :all]
             [person-data-processor.db :as db]
-            [mount.core :refer [start stop]]
+            [mount.core :as m]
             [java-time :as jt]))
 
 (defn- db-fixture [f]
-  (start)
-  (db/create-records-table!)
+  (m/start)
   (f)
-  (stop))
+  (m/stop))
 
 (defn- insert-test-data [f]
   (let [records [{:last-name      "Youngest"

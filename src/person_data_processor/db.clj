@@ -11,6 +11,10 @@
 
 (conman/bind-connection *db* "sql/queries.sql")
 
+(defstate records-table
+          :start (create-records-table!)
+          :stop (drop-records-table!))
+
 (defn get-records
   "Get all records, optionally sort.
 

@@ -11,7 +11,6 @@
 (defn -main
   [sort-by & args]
   (m/start)
-  (db/create-records-table!)
   (doseq [record (parse/input-files->records args)]
     (db/insert-record! record))
   (clojure.pprint/print-table (->> (db/get-records (keyword sort-by))
