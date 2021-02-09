@@ -14,4 +14,17 @@ LastName FirstName Email FavoriteColor DateOfBirth
 
 ## Usage
 
-TODO
+#### Generate test data
+
+```shell
+$ lein generate-data [output-file-prefix] [number of rows to generate]
+```
+
+For example:
+
+```shell
+$ lein generate-data demo 100                                                                                                                  [8:56:37]
+100  rows written to  demo-pipe.csv
+100  rows written to  demo-comma.csv
+100  rows written to  demo-space.csv
+```

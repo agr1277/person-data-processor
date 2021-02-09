@@ -7,8 +7,11 @@
                  [conman "0.9.1"]
                  [com.h2database/h2 "1.4.200"]
                  [org.clojure/tools.logging "1.1.0"]
-                 [ch.qos.logback/logback-classic "1.1.3"]]
+                 [ch.qos.logback/logback-classic "1.1.3"]
+                 [org.clojure/math.combinatorics "0.1.6"]
+                 [org.clojure/data.generators "1.0.0"]]
   :main ^:skip-aot person-data-processor.core
+  :aliases {"generate-data" ["run" "-m" "person-data-processor.data-gen"]}
   :target-path "target/%s"
   :profiles {:uberjar {:aot :all
                        :jvm-opts ["-Dclojure.compiler.direct-linking=true"]}})
