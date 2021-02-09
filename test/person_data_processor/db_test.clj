@@ -6,7 +6,7 @@
 
 (defn- db-fixture [f]
   (start)
-  (db/create-records-table)
+  (db/create-records-table!)
   (f)
   (stop))
 
@@ -27,7 +27,7 @@
                   :favorite-color "green"
                   :date-of-birth  (jt/local-date 1993 05 20)}]]
     (doseq [record records]
-      (db/insert-record record)))
+      (db/insert-record! record)))
   (f))
 
 (use-fixtures :each db-fixture test-data)

@@ -1,4 +1,4 @@
--- :name create-records-table :! :raw
+-- :name create-records-table! :! :raw
 create table records
 (
     id         integer auto_increment primary key,
@@ -9,7 +9,7 @@ create table records
     date_of_birth date
 )
 
--- :name insert-record :! :n
+-- :name insert-record! :! :n
 insert into records (first_name, last_name, email, favorite_color, date_of_birth)
 values (:first-name, :last-name, :email, :favorite-color, :date-of-birth)
 
