@@ -12,7 +12,7 @@
      :first-name     first-name
      :email          email
      :favorite-color favorite-color
-     :date-of-birth  (jt/local-date "MM/dd/yyyy" date-of-birth)}))
+     :date-of-birth  (jt/local-date "yyyy-MM-dd" date-of-birth)}))
 
 (defn input-rows->records [rows]
   (->> rows

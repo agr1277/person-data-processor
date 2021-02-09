@@ -11,13 +11,13 @@
                          :date-of-birth  (jt/local-date 1992 05 13)}]
     (testing "parses pipe delimited row"
       (is (= expected-record
-             (input-row->record "Example | Chris | chris@example.com | blue | 05/13/1992"))))
+             (input-row->record "Example | Chris | chris@example.com | blue | 1992-05-13"))))
     (testing "parses comma delimited row"
       (is (= expected-record
-             (input-row->record "Example, Chris, chris@example.com, blue, 05/13/1992"))))
+             (input-row->record "Example, Chris, chris@example.com, blue, 1990-04-19"))))
     (testing "parses space delimited row"
       (is (= expected-record
-             (input-row->record "Example Chris chris@example.com blue 05/13/1992"))))))
+             (input-row->record "Example Chris chris@example.com blue 1990-07-19"))))))
 
 (deftest test-input-rows->records
   (testing "parses rows delimited by pipe, comma, or space"
