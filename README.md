@@ -14,6 +14,25 @@ LastName FirstName Email FavoriteColor DateOfBirth
 
 ## Usage
 
+#### Process records via CLI
+
+```shell
+$ lein cli <sort-type> <files>
+$ lein cli [default | email-and-last-name | date-of-birth | last-name] 
+[files...]
+```
+
+For example:
+```shell
+$ lein cli email-and-last-name demo-pipe.csv demo-comma.csv demo-space.csv 
+                                                                                               
+| :first_name | :last_name |                  :email | :favorite_color | :date_of_birth |
+|-------------+------------+-------------------------+-----------------+----------------|
+|     MICHAEL |   ANDERSON |     michael@example.com |          orange |     2007-09-12 |
+|     MICHAEL |   ANDERSON |     michael@example.com |             red |     1991-01-04 |
+...
+```
+
 #### Generate test data
 
 ```shell
@@ -23,7 +42,7 @@ $ lein generate-data [output-file-prefix] [number of rows to generate]
 For example:
 
 ```shell
-$ lein generate-data demo 100                                                                                                                  [8:56:37]
+$ lein generate-data demo 100
 100  rows written to  demo-pipe.csv
 100  rows written to  demo-comma.csv
 100  rows written to  demo-space.csv
