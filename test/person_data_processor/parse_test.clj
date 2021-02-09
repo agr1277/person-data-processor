@@ -1,6 +1,6 @@
-(ns person-data-processor.core-test
+(ns person-data-processor.parse-test
   (:require [clojure.test :refer :all]
-            [person-data-processor.core :refer :all]
+            [person-data-processor.parse :refer :all]
             [java-time :as jt]))
 
 (deftest test-input-row->record
