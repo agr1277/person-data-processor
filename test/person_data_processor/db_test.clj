@@ -10,7 +10,7 @@
   (f)
   (stop))
 
-(defn- test-data [f]
+(defn- insert-test-data [f]
   (let [records [{:last-name      "Youngest"
                   :first-name     "Chris"
                   :email          "chris@example.com"
@@ -30,7 +30,7 @@
       (db/insert-record! record)))
   (f))
 
-(use-fixtures :each db-fixture test-data)
+(use-fixtures :each db-fixture insert-test-data)
 
 (deftest test-queries
   (testing "can select inserted rows"
@@ -50,18 +50,21 @@
                              :favorite_color "green"
                              :date_of_birth  (jt/java-date (jt/zoned-date-time 1993 05 20))}]]
       (is (= expected-records (db/get-records)))))
+
   (testing "can select rows sorted by email descending, and last name ascending"
     (let [records (->> (db/get-records :email-and-last-name)
                        (map #(vec [(:email %) (:last_name %)])))]
       (is (= [["steve@example.com" "Oldest"]
               ["chris@example.com" "Middle"]
               ["chris@example.com" "Youngest"]] records))))
+
   (testing "can select rows sorted by date-of-birth"
     (let [records (->> (db/get-records :date-of-birth)
                        (map #(vec [(:last_name %) (:first_name %)])))]
       (is (= [["Oldest" "Steve"]
               ["Middle" "Chris"]
               ["Youngest" "Chris"]] records))))
+
   (testing "can select rows sorted by last-name"
     (let [records (->> (db/get-records :last-name)
                        (map #(vec [(:last_name %) (:first_name %)])))]
