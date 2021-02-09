@@ -14,6 +14,61 @@ LastName FirstName Email FavoriteColor DateOfBirth
 
 ## Usage
 
+#### Launch http API to store records
+
+```shell
+$ lein api
+Running api at http://127.0.0.1:3000/
+```
+
+##### Endpoints
+
+- `POST /records` - Post a record in any input format, supports `text/plain`
+- `GET /records/email` - fetch records sorted by email descending, last name 
+  ascending
+- `GET /records/birthdate` - fetch records sorted by birth date descending
+- `GET /records/name` - fetch records sorted by name
+
+Example requests with CURL:
+
+```shell
+$ curl -s -X POST http://127.0.0.1:3000/records -H "Content-Type: text/plain" --data "White Joe joe@example.com green 1990-07-19" | jq .
+[
+  {
+    "first_name": "Mark",
+    "last_name": "Smith",
+    "email": "mark@example.com",
+    "favorite_color": "green",
+    "date_of_birth": "1992-07-19"
+  },
+  {
+    "first_name": "Joe",
+    "last_name": "White",
+    "email": "joe@example.com",
+    "favorite_color": "green",
+    "date_of_birth": "1990-07-19"
+  }
+]
+
+$ curl -s http://127.0.0.1:3000/records/email | jq .
+[
+  {
+    "first_name": "Mark",
+    "last_name": "Smith",
+    "email": "mark@example.com",
+    "favorite_color": "green",
+    "date_of_birth": "1992-07-19"
+  },
+  {
+    "first_name": "Joe",
+    "last_name": "White",
+    "email": "joe@example.com",
+    "favorite_color": "green",
+    "date_of_birth": "1990-07-19"
+  }
+]
+```
+
 #### Process records via CLI
 
 ```shell
